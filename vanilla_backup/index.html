@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Senior Flutter Engineer - Progress Dashboard</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo-glow"></div>
+        <span class="logo-text">Seniorify<span class="highlight">.flutter</span></span>
+      </div>
+      
+      <nav class="sidebar-nav">
+        <a href="#" class="nav-item active" data-tab="dashboard">
+          <i data-lucide="layout-dashboard"></i>
+          <span>Dashboard</span>
+        </a>
+        <a href="#" class="nav-item" data-tab="skills">
+          <i data-lucide="shield-check"></i>
+          <span>Core Skills</span>
+        </a>
+        <a href="#" class="nav-item" data-tab="roadmap">
+          <i data-lucide="map-pin"></i>
+          <span>3-Month Roadmap</span>
+        </a>
+        <a href="#" class="nav-item" data-tab="quizzes">
+          <i data-lucide="help-circle"></i>
+          <span>Practice Quizzes</span>
+        </a>
+        <a href="#" class="nav-item" data-tab="interview">
+          <i data-lucide="message-square"></i>
+          <span>Mock Interview</span>
+        </a>
+        <a href="#" class="nav-item" data-tab="cv-booster">
+          <i data-lucide="file-text"></i>
+          <span>CV Booster</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="profile-card">
+          <div class="avatar-container">
+            <div class="avatar-ring"></div>
+            <div class="avatar-initials">ME</div>
+          </div>
+          <div class="profile-info">
+            <span class="profile-name">Mid-Level Flutter Eng</span>
+            <span class="profile-target">Target: Senior Level</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Header -->
+      <header class="content-header">
+        <div class="header-title-area">
+          <h1 id="page-title">Seniority Dashboard</h1>
+          <p id="page-subtitle" class="text-muted">Track your progress and bridge the senior gaps.</p>
+        </div>
+        
+        <div class="header-stats">
+          <div class="stat-bubble">
+            <span class="stat-label">Senior Readiness Score</span>
+            <div class="readiness-progress-wrapper">
+              <div class="readiness-text-container">
+                <span class="readiness-value" id="overall-percentage">0%</span>
+                <span class="readiness-level" id="readiness-grade">Mid-Level</span>
+              </div>
+              <div class="readiness-bar-bg">
+                <div class="readiness-bar-fill" id="overall-bar" style="width: 0%;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Scrollable Panels Container -->
+      <div class="panels-container">
+        
+        <!-- DASHBOARD TAB -->
+        <section id="tab-dashboard" class="tab-panel active">
+          <!-- Welcome Alert Banner -->
+          <div class="alert-banner">
+            <div class="banner-content">
+              <h3>🚀 Welcome to your Senior Journey!</h3>
+              <p>You have a strong Flutter production base. To achieve a <strong>Senior</strong> rank, focus on the gaps identified: <strong>Flutter Internals, Advanced Dart, Performance, Native Bridges, and Leadership/System Design</strong>.</p>
+            </div>
+            <button class="banner-btn" onclick="document.querySelector('[data-tab=skills]').click()">Explore Skills</button>
+          </div>
+
+          <!-- Highlight Cards -->
+          <div class="grid-3">
+            <div class="card stat-card glow-card">
+              <div class="card-icon-wrapper purple">
+                <i data-lucide="award"></i>
+              </div>
+              <div class="stat-content">
+                <span class="stat-num" id="completed-tasks-count">0/60</span>
+                <span class="stat-title">Completed Skill Nodes</span>
+              </div>
+            </div>
+
+            <div class="card stat-card">
+              <div class="card-icon-wrapper blue">
+                <i data-lucide="calendar"></i>
+              </div>
+              <div class="stat-content">
+                <span class="stat-num" id="current-month-roadmap">Month 1</span>
+                <span class="stat-title">Current Phase Focus</span>
+              </div>
+            </div>
+
+            <div class="card stat-card">
+              <div class="card-icon-wrapper green">
+                <i data-lucide="trending-up"></i>
+              </div>
+              <div class="stat-content">
+                <span class="stat-num" id="quiz-correct-rate">0%</span>
+                <span class="stat-title">Quiz Accuracy Rate</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Major Gaps Section -->
+          <div class="grid-2 mt-4">
+            <div class="card gap-highlight-card">
+              <div class="card-header">
+                <h2>⚠️ Priority Gap Analysis</h2>
+                <span class="badge badge-warning">High Priority</span>
+              </div>
+              <div class="card-body">
+                <p class="text-muted mb-4">Focus on these 5 areas highlighted as your largest current gaps to push your seniority forward:</p>
+                <div class="gap-list">
+                  <div class="gap-item" data-category="flutter-internals">
+                    <div class="gap-meta">
+                      <span class="gap-name">Flutter Internals</span>
+                      <span class="gap-pct" id="gap-pct-flutter-internals">0%</span>
+                    </div>
+                    <div class="gap-bar"><div class="gap-fill" id="gap-fill-flutter-internals" style="width: 0%"></div></div>
+                  </div>
+                  <div class="gap-item" data-category="dart-advanced">
+                    <div class="gap-meta">
+                      <span class="gap-name">Advanced Dart</span>
+                      <span class="gap-pct" id="gap-pct-dart-advanced">0%</span>
+                    </div>
+                    <div class="gap-bar"><div class="gap-fill" id="gap-fill-dart-advanced" style="width: 0%"></div></div>
+                  </div>
+                  <div class="gap-item" data-category="performance">
+                    <div class="gap-meta">
+                      <span class="gap-name">Performance Optimization</span>
+                      <span class="gap-pct" id="gap-pct-performance">0%</span>
+                    </div>
+                    <div class="gap-bar"><div class="gap-fill" id="gap-fill-performance" style="width: 0%"></div></div>
+                  </div>
+                  <div class="gap-item" data-category="native-dev">
+                    <div class="gap-meta">
+                      <span class="gap-name">Native iOS & Android</span>
+                      <span class="gap-pct" id="gap-pct-native-dev">0%</span>
+                    </div>
+                    <div class="gap-bar"><div class="gap-fill" id="gap-fill-native-dev" style="width: 0%"></div></div>
+                  </div>
+                  <div class="gap-item" data-category="system-design">
+                    <div class="gap-meta">
+                      <span class="gap-name">System Design</span>
+                      <span class="gap-pct" id="gap-pct-system-design">0%</span>
+                    </div>
+                    <div class="gap-bar"><div class="gap-fill" id="gap-fill-system-design" style="width: 0%"></div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Study Stats & Habits -->
+            <div class="card flex-card">
+              <div class="card-header">
+                <h2>📈 Category Progress</h2>
+              </div>
+              <div class="card-body">
+                <div class="all-categories-progress" id="categories-grid-progress">
+                  <!-- Dynamic Categories List with Percentages -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CORE SKILLS TAB -->
+        <section id="tab-skills" class="tab-panel">
+          <div class="skills-layout">
+            <!-- Left Side Categories Menu -->
+            <div class="skills-menu" id="skills-menu-list">
+              <!-- Dynamically populated categories -->
+            </div>
+            
+            <!-- Right Side Detailed Skill Checklist -->
+            <div class="skills-detail card" id="skills-detail-container">
+              <div class="no-selection">
+                <i data-lucide="shield-question" size="48"></i>
+                <h3>Select a category to view items</h3>
+                <p>Track your experience nodes, read curated study resources, and complete tasks.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 3-MONTH ROADMAP TAB -->
+        <section id="tab-roadmap" class="tab-panel">
+          <div class="roadmap-intro card">
+            <h2>📍 3-Month Structured Study Roadmap</h2>
+            <p class="text-muted">A timeline curated based on your current background. Check off roadmap milestones as you progress through the months.</p>
+          </div>
+          <div class="roadmap-timeline" id="roadmap-timeline-container">
+            <!-- Dynamically populated roadmap stages -->
+          </div>
+        </section>
+
+        <!-- PRACTICE QUIZZES TAB -->
+        <section id="tab-quizzes" class="tab-panel">
+          <div class="grid-quiz-layout">
+            <div class="card quiz-card">
+              <div class="card-header">
+                <h2 id="quiz-question-number">Question 1</h2>
+                <span class="badge badge-purple" id="quiz-category-badge">Dart Advanced</span>
+              </div>
+              <div class="card-body">
+                <p class="quiz-question" id="quiz-question-text">Loading question...</p>
+                <div class="quiz-options-container" id="quiz-options">
+                  <!-- Option buttons dynamically generated -->
+                </div>
+                <div class="quiz-feedback-box hidden" id="quiz-feedback">
+                  <div class="feedback-status">
+                    <i id="feedback-icon" data-lucide="check-circle"></i>
+                    <span id="feedback-title">Correct Answer!</span>
+                  </div>
+                  <p id="feedback-explanation">Explanation goes here.</p>
+                </div>
+              </div>
+              <div class="card-footer">
+                <button class="btn btn-secondary" id="quiz-prev-btn">Previous</button>
+                <button class="btn btn-primary" id="quiz-next-btn">Check Answer</button>
+              </div>
+            </div>
+
+            <!-- Quiz Progress Panel -->
+            <div class="card quiz-stats-panel">
+              <h2>Quiz Performance</h2>
+              <div class="quiz-score-circle">
+                <svg width="120" height="120">
+                  <circle cx="60" cy="60" r="50" class="ring-bg"></circle>
+                  <circle cx="60" cy="60" r="50" class="ring-fill" id="quiz-ring" style="stroke-dashoffset: 314;"></circle>
+                </svg>
+                <div class="score-text">
+                  <span class="score-percentage" id="quiz-score-pct">0%</span>
+                  <span class="score-subtext" id="quiz-score-ratio">0/0 solved</span>
+                </div>
+              </div>
+              
+              <div class="quiz-question-nav">
+                <h3>All Questions</h3>
+                <div class="question-dots" id="quiz-dots-container">
+                  <!-- Dots representing questions -->
+                </div>
+              </div>
+              <button class="btn btn-outline-primary w-full mt-4" id="quiz-reset-btn">Reset All Quizzes</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- MOCK INTERVIEW TAB -->
+        <section id="tab-interview" class="tab-panel">
+          <div class="grid-2-3">
+            <!-- Left Side: Scenarios Selection -->
+            <div class="interview-sidebar">
+              <div class="card">
+                <h2>Select Topic</h2>
+                <div class="scenario-list" id="interview-scenarios-list">
+                  <!-- Dynamic Scenarios -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Side: Interview Console -->
+            <div class="interview-console card">
+              <div id="interview-active-area">
+                <div class="console-header">
+                  <div class="console-badge">
+                    <span class="live-dot"></span>
+                    <span id="interview-topic-title">Select a topic to start</span>
+                  </div>
+                  <span class="difficulty-tag" id="interview-difficulty">Senior</span>
+                </div>
+                
+                <div class="console-chat" id="interview-chat-container">
+                  <div class="chat-message bot">
+                    <div class="chat-bubble">
+                      Please select a mock interview topic from the panel on the left to begin.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="console-input-area">
+                  <textarea id="interview-input" placeholder="Type your response here... (Write detailed explanations covering mechanics and architecture)" rows="4" disabled></textarea>
+                  <div class="console-actions">
+                    <span class="tip-text">Pro Tip: Answer using clean architecture terms, structural design patterns, and rendering details.</span>
+                    <button class="btn btn-primary" id="interview-submit-btn" disabled>Submit Answer</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CV BOOSTER TAB -->
+        <section id="tab-cv-booster" class="tab-panel">
+          <div class="card cv-intro">
+            <h2>💡 Resume & CV Optimization Guide</h2>
+            <p class="text-muted">Companies hiring Senior Engineers scan your CV for architectural decisions, performance benchmarks, DevOps setups, and leadership. Below is a tool to contrast typical mid-level CV lines against highly persuasive Senior statements.</p>
+          </div>
+          
+          <div class="cv-grid" id="cv-items-container">
+            <!-- Dynamically populated CV optimizer elements -->
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Scripts -->
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
