@@ -469,6 +469,65 @@ export const seniorityData = {
         { title: "Developing packages & plugins", url: "https://docs.flutter.dev/development/packages-and-plugins/developing-packages" },
         { title: "Publishing a Package on pub.dev", url: "https://dart.dev/tools/pub/publishing" }
       ]
+    },
+    {
+      id: "pte-core",
+      title: "PTE Core Exam Prep",
+      icon: "GraduationCap",
+      description: "Comprehensive 6-week study plan & resources for the PTE Core Exam (Speaking, Writing, Reading, Listening).",
+      tasks: [
+        {
+          id: "pte-task-1",
+          text: "Review Pearson 19 Question Types",
+          desc: "Understand test format, section structures, and exact scoring guidelines for all 19 question types on the Pearson official site."
+        },
+        {
+          id: "pte-task-2",
+          text: "Speaking Focus: Read Aloud & Repeat Sentence",
+          desc: "Practice daily using ApeUni or AlfaPTE AI engine to calibrate speech recognition, prioritizing oral fluency over speed."
+        },
+        {
+          id: "pte-task-3",
+          text: "Writing Section: Email Templates",
+          desc: "Memorize and master high-scoring structures and reliable templates for writing emails in the PTE Core exam."
+        },
+        {
+          id: "pte-task-4",
+          text: "Write from Dictation & Fill in the Blanks",
+          desc: "Daily high-priority drilling for Write from Dictation (Listening) and Fill in the Blanks (Reading & Listening) which carry the heaviest score weight."
+        },
+        {
+          id: "pte-task-5",
+          text: "Re-order Paragraphs Practice",
+          desc: "Daily logic and context-clue practice for paragraph re-ordering to maximize Reading section points."
+        },
+        {
+          id: "pte-task-6",
+          text: "Typing Muscle Memory & Spelling Accuracy",
+          desc: "Practice writing email templates on a standard physical keyboard to build typing speed with zero spelling errors."
+        },
+        {
+          id: "pte-task-7",
+          text: "Full-Length Third-Party Mock Tests",
+          desc: "Complete at least 2 full 2-hour mock tests under strict exam conditions on platforms like ApeUni or Language Academy without pausing."
+        },
+        {
+          id: "pte-task-8",
+          text: "AI Score Report Review & Target Drilling",
+          desc: "Analyze score breakdowns from AI mock tests, isolate lowest-scoring question types, and drill them intensively."
+        },
+        {
+          id: "pte-task-9",
+          text: "Official Pearson Scored Practice Test",
+          desc: "Take an official Pearson scored practice test in the final week for accurate score prediction and test-day preparation."
+        }
+      ],
+      resources: [
+        { title: "Pearson PTE Official Preparation", url: "https://www.pearsonpte.com/pte-core/preparation/" },
+        { title: "ApeUni PTE AI Practice Platform", url: "https://www.apeuni.com/" },
+        { title: "AlfaPTE Mock Tests & AI Analytics", url: "https://alfapte.com/" },
+        { title: "Language Academy AI Mock Tests", url: "https://www.languageacademy.com.au/mock-test" }
+      ]
     }
   ],
   roadmap: [
@@ -506,6 +565,41 @@ export const seniorityData = {
         "Implement type-safe Platform Channels using Pigeon.",
         "Integrate custom native Swift & Kotlin services.",
         "Automate store deployments with Fastlane and GitHub Actions."
+      ]
+    }
+  ],
+  pteRoadmap: [
+    {
+      phase: "Phase 1",
+      title: "Familiarization and Speaking",
+      duration: "Weeks 1 & 2",
+      focus: "Understand test format and get comfortable speaking into a microphone with AI evaluation.",
+      items: [
+        "Review all 19 question types on the Pearson official website to understand expectations.",
+        "Practice 'Read Aloud' and 'Repeat Sentence' daily using ApeUni or AlfaPTE to train the AI (focus on oral fluency).",
+        "Memorize reliable templates for the Writing section, particularly for writing emails."
+      ]
+    },
+    {
+      phase: "Phase 2",
+      title: "Heavy Lifting - Reading and Listening",
+      duration: "Weeks 3 & 4",
+      focus: "Master the highest-scoring question types and build typing speed and accuracy.",
+      items: [
+        "Dedicate daily practice to 'Write from Dictation' (Listening) and 'Fill in the Blanks' (Reading & Listening).",
+        "Practice 'Re-order Paragraphs' daily using logical thinking and context clues.",
+        "Type writing templates repeatedly on a standard keyboard for muscle memory and zero spelling errors."
+      ]
+    },
+    {
+      phase: "Phase 3",
+      title: "Intensive Mock Testing & Target Benchmark",
+      duration: "Weeks 5 & 6",
+      focus: "Build stamina with 2-hour full-length mock tests and determine your target CLB benchmark.",
+      items: [
+        "Take at least two full-length 2-hour mock tests on ApeUni or Language Academy under strict exam conditions.",
+        "Thoroughly review AI score reports, identify weak question types, and drill those exact questions.",
+        "Purchase and take one Official Scored Practice Test from Pearson for an accurate final score prediction."
       ]
     }
   ],

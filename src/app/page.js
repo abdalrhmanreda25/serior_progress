@@ -6,7 +6,7 @@ import {
   MessageSquare, FileText, Award, Calendar, TrendingUp, 
   Code2, Layers, GitFork, Puzzle, Smartphone, Zap, 
   TestTube, Terminal, GitBranch, Binary, Users, Globe, ExternalLink,
-  CheckCircle, AlertCircle, RefreshCw, Send, Sparkles
+  CheckCircle, AlertCircle, RefreshCw, Send, Sparkles, GraduationCap, BookOpen
 } from "lucide-react";
 import { seniorityData } from "../data/seniorityData";
 
@@ -14,7 +14,8 @@ import { seniorityData } from "../data/seniorityData";
 const IconMap = {
   Code2, Layers, GitFork, Puzzle, Smartphone, Zap, 
   TestTube, Terminal, GitBranch, Binary, Users, Globe,
-  LayoutDashboard, ShieldCheck, MapPin, HelpCircle, MessageSquare, FileText
+  LayoutDashboard, ShieldCheck, MapPin, HelpCircle, MessageSquare, FileText,
+  GraduationCap, BookOpen
 };
 
 const renderIcon = (name, className = "") => {
@@ -25,6 +26,7 @@ const renderIcon = (name, className = "") => {
 export default function Home() {
   const [mounted, setMounted] = useState(false);
   const [activeTab, setActiveTab] = useState("dashboard");
+  const [activeRoadmapPlan, setActiveRoadmapPlan] = useState("senior");
   const [checkedTasks, setCheckedTasks] = useState({});
   const [checkedRoadmap, setCheckedRoadmap] = useState({});
   const [selectedCategoryId, setSelectedCategoryId] = useState("dart-advanced");
@@ -489,53 +491,173 @@ export default function Home() {
   };
 
   const renderRoadmapPanel = () => {
+    const pteCategory = seniorityData.categories.find(c => c.id === "pte-core");
+
     return (
       <div className="tab-panel active">
-        <div className="roadmap-intro card">
-          <h2>📍 3-Month Structured Study Roadmap</h2>
-          <p className="text-muted">A timeline compressed based on your current background. Check off roadmap milestones as you progress through the months.</p>
+        {/* Plan Switcher Header */}
+        <div className="card mb-6" style={{ background: "rgba(15, 15, 23, 0.8)", borderColor: "rgba(99, 102, 241, 0.2)" }}>
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 p-2">
+            <div>
+              <h2 className="text-xl font-bold flex items-center gap-2">
+                <MapPin className="text-indigo-400" size={22} />
+                <span>Study Plans & Progression Roadmaps</span>
+              </h2>
+              <p className="text-muted text-sm mt-1">Select a study plan to track your structured milestones and daily preparation tasks.</p>
+            </div>
+            <div className="flex items-center gap-2 bg-black/40 p-1.5 rounded-xl border border-white/5 self-start md:self-auto">
+              <button 
+                className={`px-4 py-2 text-xs font-semibold rounded-lg transition-all flex items-center gap-2 ${activeRoadmapPlan === "senior" ? "bg-indigo-600 text-white shadow-lg" : "text-gray-400 hover:text-white"}`}
+                onClick={() => setActiveRoadmapPlan("senior")}
+              >
+                <ShieldCheck size={14} />
+                <span>Senior Flutter (3 Months)</span>
+              </button>
+              <button 
+                className={`px-4 py-2 text-xs font-semibold rounded-lg transition-all flex items-center gap-2 ${activeRoadmapPlan === "pte" ? "bg-indigo-600 text-white shadow-lg" : "text-gray-400 hover:text-white"}`}
+                onClick={() => setActiveRoadmapPlan("pte")}
+              >
+                <GraduationCap size={14} />
+                <span>PTE Core Exam (6 Weeks)</span>
+              </button>
+            </div>
+          </div>
         </div>
 
-        <div className="roadmap-timeline">
-          {seniorityData.roadmap.map((stage, idx) => (
-            <div className="roadmap-card card" key={idx}>
-              <div className="roadmap-header">
-                <div className="roadmap-month-title">
-                  <h3>{stage.month}: {stage.title}</h3>
-                </div>
-                <span className="roadmap-duration">{stage.duration}</span>
-              </div>
-              <p className="roadmap-focus text-sm text-muted">{stage.focus}</p>
-              
-              <div className="roadmap-items-grid">
-                {stage.items.map((item, itemIdx) => {
-                  const itemId = `road-${idx}-${itemIdx}`;
-                  const isChecked = !!checkedRoadmap[itemId];
-                  return (
-                    <div className="roadmap-item" key={itemId}>
-                      <label className="checkbox-container">
-                        <input 
-                          type="checkbox" 
-                          checked={isChecked}
-                          onChange={(e) => {
-                            setCheckedRoadmap(prev => ({ ...prev, [itemId]: e.target.checked }));
-                          }}
-                        />
-                        <span className="checkmark"></span>
-                      </label>
-                      <span 
-                        className="roadmap-item-text text-muted text-sm"
-                        style={{ textDecoration: isChecked ? "line-through" : "none", color: isChecked ? "var(--text-muted)" : "var(--text-main)" }}
-                      >
-                        {item}
-                      </span>
+        {activeRoadmapPlan === "senior" ? (
+          <>
+            <div className="roadmap-intro card mb-6">
+              <h2>📍 3-Month Structured Senior Engineering Roadmap</h2>
+              <p className="text-muted">A timeline compressed based on your current background. Check off roadmap milestones as you progress through the months.</p>
+            </div>
+
+            <div className="roadmap-timeline">
+              {seniorityData.roadmap.map((stage, idx) => (
+                <div className="roadmap-card card" key={idx}>
+                  <div className="roadmap-header">
+                    <div className="roadmap-month-title">
+                      <h3>{stage.month}: {stage.title}</h3>
                     </div>
-                  );
-                })}
+                    <span className="roadmap-duration">{stage.duration}</span>
+                  </div>
+                  <p className="roadmap-focus text-sm text-muted">{stage.focus}</p>
+                  
+                  <div className="roadmap-items-grid">
+                    {stage.items.map((item, itemIdx) => {
+                      const itemId = `road-${idx}-${itemIdx}`;
+                      const isChecked = !!checkedRoadmap[itemId];
+                      return (
+                        <div className="roadmap-item" key={itemId}>
+                          <label className="checkbox-container">
+                            <input 
+                              type="checkbox" 
+                              checked={isChecked}
+                              onChange={(e) => {
+                                setCheckedRoadmap(prev => ({ ...prev, [itemId]: e.target.checked }));
+                              }}
+                            />
+                            <span className="checkmark"></span>
+                          </label>
+                          <span 
+                            className="roadmap-item-text text-muted text-sm"
+                            style={{ textDecoration: isChecked ? "line-through" : "none", color: isChecked ? "var(--text-muted)" : "var(--text-main)" }}
+                          >
+                            {item}
+                          </span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </>
+        ) : (
+          <>
+            {/* PTE Core Resources Banner */}
+            <div className="card mb-6" style={{ background: "linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%)", borderColor: "rgba(139, 92, 246, 0.3)" }}>
+              <div className="card-header border-b border-white/5 pb-3">
+                <h3 className="text-lg font-bold flex items-center gap-2 text-indigo-300">
+                  <GraduationCap size={20} />
+                  <span>Essential PTE Core Resources & Preparation Links</span>
+                </h3>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                {pteCategory?.resources.map((res, i) => (
+                  <a 
+                    key={i} 
+                    href={res.url} 
+                    target="_blank" 
+                    rel="noreferrer" 
+                    className="p-3.5 rounded-xl bg-black/40 border border-white/5 hover:border-indigo-500/50 hover:bg-black/60 transition-all flex items-center justify-between group"
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold text-xs">
+                        {i + 1}
+                      </div>
+                      <div>
+                        <div className="font-semibold text-sm group-hover:text-indigo-400 transition-colors">{res.title}</div>
+                        <div className="text-xs text-gray-400 font-mono mt-0.5">{res.url}</div>
+                      </div>
+                    </div>
+                    <ExternalLink size={16} className="text-gray-500 group-hover:text-indigo-400 transition-colors flex-shrink-0" />
+                  </a>
+                ))}
               </div>
             </div>
-          ))}
-        </div>
+
+            {/* PTE Core 6-Week Study Plan */}
+            <div className="roadmap-timeline">
+              {seniorityData.pteRoadmap?.map((stage, idx) => (
+                <div className="roadmap-card card" key={idx}>
+                  <div className="roadmap-header">
+                    <div className="roadmap-month-title">
+                      <h3>{stage.phase}: {stage.title}</h3>
+                    </div>
+                    <span className="roadmap-duration">{stage.duration}</span>
+                  </div>
+                  <p className="roadmap-focus text-sm text-muted">{stage.focus}</p>
+                  
+                  <div className="roadmap-items-grid">
+                    {stage.items.map((item, itemIdx) => {
+                      const itemId = `pte-road-${idx}-${itemIdx}`;
+                      const isChecked = !!checkedRoadmap[itemId];
+                      return (
+                        <div className="roadmap-item" key={itemId}>
+                          <label className="checkbox-container">
+                            <input 
+                              type="checkbox" 
+                              checked={isChecked}
+                              onChange={(e) => {
+                                setCheckedRoadmap(prev => ({ ...prev, [itemId]: e.target.checked }));
+                              }}
+                            />
+                            <span className="checkmark"></span>
+                          </label>
+                          <span 
+                            className="roadmap-item-text text-muted text-sm"
+                            style={{ textDecoration: isChecked ? "line-through" : "none", color: isChecked ? "var(--text-muted)" : "var(--text-main)" }}
+                          >
+                            {item}
+                          </span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Target CLB Level Callout */}
+            <div className="card mt-6 p-4 text-center border-dashed border-indigo-500/30 bg-indigo-950/20">
+              <Sparkles size={24} className="mx-auto text-indigo-400 mb-2" />
+              <h4 className="font-bold text-sm text-indigo-200">Target CLB Benchmark Guidance</h4>
+              <p className="text-xs text-muted mt-1 max-w-xl mx-auto">
+                To narrow down the specific scores needed in your mock tests, identify your target Canadian Language Benchmark (CLB) level (e.g. CLB 7, CLB 9, or CLB 10) for Express Entry or PNP applications.
+              </p>
+            </div>
+          </>
+        )}
       </div>
     );
   };
